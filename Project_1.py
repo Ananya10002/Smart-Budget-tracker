@@ -7,6 +7,7 @@ w=int(input("What is your unnessary expense[wants]:"))
 print("For this Month-")
 total_expense= l+n+f+w
 print(total_expense)
+savings=income-total_expenses
 if income>total_expense:
     print("Great,you are on the right way!")
 else:
@@ -25,4 +26,19 @@ if (income-total_expense)*100>=20:
     print("Great,you are being good at saving a portion of your income")
 else:
     print("you must focus on atleast saving 20% of your income")  
+
 print("Thanks for using Smart budget tracker")
+from datetime import datetime
+now=datetime.now()
+date=now.strftime("%d-%m-%Y")
+time=now.strftime("%H-%M")
+print(date)
+print(time)
+with open("budget.txt","a") as file:
+    file.write(f"Income: {income}\n")
+    file.write(f"total_expense: {total_expense}\n")
+    file.write(f"Spent on groceries: {f}\n")
+    file.write(f"Spent on home rent: {l}\n")
+    file.write(f"Spent on other nessesary expenses: {n}\n")
+    file.write(f"Spend on unnessary expenses: {w}\n")
+    file.write(f"Savings: {savings}\n")
