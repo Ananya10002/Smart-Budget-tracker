@@ -7,7 +7,7 @@ w=int(input("What is your unnessary expense[wants]:"))
 print("For this Month-")
 total_expense= l+n+f+w
 print(total_expense)
-savings=income-total_expenses
+savings=income-total_expense
 if income>total_expense:
     print("Great,you are on the right way!")
 else:
@@ -42,3 +42,4 @@ with open("budget.txt","a") as file:
     file.write(f"Spent on other nessesary expenses: {n}\n")
     file.write(f"Spend on unnessary expenses: {w}\n")
     file.write(f"Savings: {savings}\n")
+
