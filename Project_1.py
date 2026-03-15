@@ -1,31 +1,35 @@
 #Smart Budget tracker
-income=int(input("Enter your monthly income:"))
-l=int(input("What is your home rent:"))
-f=int(input("How much do you spend on grocieries?:"))
-n=int(input("Enter any other necessary expense,excluding rent and grocieries:"))
-w=int(input("What is your unnessary expense[wants]:"))
+def clean_amount(text):
+    text.replace("," , " ")
+    text.replace( "$" , " ")
+    return text
+income=clean_amount(input("Enter your monthly income:"))
+l=clean_amount(input("What is your home rent:"))
+f=clean_amount(input("How much do you spend on grocieries?:"))
+n=clean_amount(input("Enter any other necessary expense,excluding rent and grocieries:"))
+w=clean_amount(input("What is your unnessary expense[wants]:"))
 print("For this Month-")
 total_expense= l+n+f+w
-print(total_expense)
+needs=l+n+f
+print("For this month you spent:", total_expense)
 savings=income-total_expense
-if income>total_expense:
-    print("Great,you are on the right way!")
+
+#Function to check if budget follows 50/30/20 rule
+def Budget_check(savings,income,needs,w):
+    If needs/income*100=<50:
+    print("Great, You are able to spend 50 or less of your income in your needs")
 else:
-    print("you must reduce your expenses")
-print("Following the 50/30/20 rule-")
-if (l+n+f)/income*100>= 50:
-    print("Great,you are successfully invested 50% or lesser of income in needs")
-    print("You are on right path")
-else:
-    print("You must reduce your unnessary expenses or liabilities")
-if w/income*100>=30: 
-    print("great you are spending in right amount")
-else:
-    print("your unnessary expenses must not exceed 30% of your income") 
-if (income-total_expense)*100>=20:
-    print("Great,you are being good at saving a portion of your income")
-else:
-    print("you must focus on atleast saving 20% of your income")  
+    print("You should focus on saving 50% of your income for basic needs.")
+     if w/income*100<=30: 
+      print("great you are spending in right amount")
+     else:
+      print("WARNING!!! your unnessary expenses must not exceed 30% of your income") 
+    if savings/income*100>=20:
+     print("Great,you are being good at saving a portion of your income")
+    else:
+     print("you must focus on atleast saving 20% of your income")  
+
+Budget_check(savings,income,needs,w) #calling function
 
 print("Thanks for using Smart budget tracker")
 from datetime import datetime
